@@ -1,0 +1,35 @@
+
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '4.0.3'
+}
+
+group 'com.prongbang'
+version '1.0'
+
+sourceCompatibility = 1.8
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+defaultTasks 'clean', 'build'
+
+ext {
+    helidonVersion = '1.0.2'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "io.helidon.webserver:helidon-webserver:$helidonVersion"
+    implementation "io.helidon.media.jackson:helidon-media-jackson-server:$helidonVersion"
+    
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+application { // java -jar ./build/libs/*-all.jar
+    mainClassName = 'com.prongbang.helidon.Main'
+}
