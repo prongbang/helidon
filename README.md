@@ -17,3 +17,9 @@
 ```
 ./gradlew run
 ```
+
+## Run on Docker
+
+```
+docker-compose up -d --build
+```
